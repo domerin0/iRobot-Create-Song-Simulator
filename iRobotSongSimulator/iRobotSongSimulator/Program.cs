@@ -32,7 +32,7 @@ namespace iRobotSongSimulator
                 {
                     case "song":
                         if (cmd.Length % 2 == 1)
-                            consoleNotes(cmd, dictionary);
+                            fromConsole(cmd, dictionary);
                         else
                             Console.WriteLine("Incorrect number of arguments (need even number).");
                         break;
@@ -64,9 +64,10 @@ namespace iRobotSongSimulator
                 int length = Int32.Parse(splitLines[1]);
                 playNote(freq, length);
             }
+            Console.Write("Finished.");
         }
 
-        private static void consoleNotes(string[] args, Dictionary<int, double> dic)
+        private static void fromConsole(string[] args, Dictionary<int, double> dic)
         {
             for (int i = 1; i < args.Length - 1; i += 2)
             {
@@ -78,6 +79,7 @@ namespace iRobotSongSimulator
                     playNote(freq, duration);
                 }
             }
+            Console.Write("Finished.");
         }
 
         /* string outerTag = "<DeviceSettings>\n{0}</DeviceSettings>";
