@@ -21,10 +21,10 @@ namespace iRobotSongSimulator
 
         static void Main(string[] args)
         {
+            var section = (Hashtable)ConfigurationManager.GetSection("notes");
+            Dictionary<int, double> dictionary = section.Cast<DictionaryEntry>().ToDictionary(d => Int32.Parse((string)d.Key), d => double.Parse((string)d.Value));
             while (true)
             {
-                var section = (Hashtable)ConfigurationManager.GetSection("notes");
-                Dictionary<int, double> dictionary = section.Cast<DictionaryEntry>().ToDictionary(d => Int32.Parse((string)d.Key), d => double.Parse((string)d.Value));
                 Console.WriteLine(section["Reset"]);
                 string input = Console.ReadLine();
                 string[] cmd = input.Split(' ');
